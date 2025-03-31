@@ -1,0 +1,26 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 35px;
+}
+
+.columnContainer {
+  width: 440px;
+  height: 800px;
+  padding: 20px;
+  border: 1px solid #737373;
+  border-radius: 8px;
+  background: #d8dbdd;
+  box-shadow: 0px 16px 50px 0px #0000003d;
+  transition: all 0.3s;
+}
+
+.columnContainer:hover {
+  box-shadow: 0px 16px 50px 0px #97b79c;
+}
