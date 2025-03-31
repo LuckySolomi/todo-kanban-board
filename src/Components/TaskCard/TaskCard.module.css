@@ -1,0 +1,25 @@
+.taskCard {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #8a8a8a;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 15px;
+  margin: 0;
+}
+
+p {
+  font-weight: 400;
+  font-size: 15px;
+  margin: 0;
+}
+
+.amountFrequencyContainer {
+  display: flex;
+  align-items: center;
+}
