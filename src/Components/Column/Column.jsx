@@ -24,7 +24,16 @@ function Column({ title, tasks }) {
         style={{ backgroundColor: isOver ? "#e7eaed" : "#d8dbdd" }}
       >
         {tasks.map((task) => (
-          <TaskCard key={task.id} id={task.id} {...task} />
+          <TaskCard
+            key={task.id}
+            id={task.id}
+            title={task.title}
+            created_at={task.created_at}
+            user={task.user}
+            comments={task.comments}
+            number={task.number}
+            column={task.column}
+          />
         ))}
       </div>
     </div>

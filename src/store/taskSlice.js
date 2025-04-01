@@ -10,7 +10,11 @@ export const fetchIssues = createAsyncThunk(
 
     return data.map((issue) => ({
       id: issue.id,
-      cardTitle: issue.title,
+      title: issue.title,
+      created_at: issue.created_at,
+      user: issue.user,
+      comments: issue.comments,
+      number: issue.number,
       column: "ToDo",
       url: issue.html_url,
     }));

@@ -17,9 +17,14 @@ p {
   font-weight: 400;
   font-size: 15px;
   margin: 0;
+  margin-top: 5px;
 }
 
 .amountFrequencyContainer {
   display: flex;
   align-items: center;
+}
+
+.numberContainer {
+  margin: 5px 10px 0 0;
 }
