@@ -1,10 +1,16 @@
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { useDrag } from "react-dnd";
 import styles from "./TaskCard.module.css";
 
-function TaskCard({ id, cardTitle }) {
+function TaskCard({ id, cardTitle, column }) {
+  const dispatch = useDispatch();
+  const [starred, setStarred] = useState(false);
+  const [stars, setStars] = useState(0);
+
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "TASK",
-    item: { id },
+    item: { id, column },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),

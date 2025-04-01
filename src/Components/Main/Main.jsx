@@ -1,35 +1,25 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Column from "../Column/Column";
 import styles from "./Main.module.css";
 
-const initialTasks = [
-  { id: 1, cardTitle: "Task 1", column: "ToDo" },
-  { id: 2, cardTitle: "Task 2", column: "ToDo" },
-  { id: 3, cardTitle: "Task 3", column: "In Progress" },
-];
-
 function Main() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const tasks = useSelector((state) => state.tasks.items);
 
-  const handleDropTask = (taskId, newColumn) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, column: newColumn } : task
-      )
-    );
-  };
+  function handleDropTask(taskId, newColumn) {
+    dispatch(updateTaskPosition({ id: taskId, column: newColumn }));
+  }
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className={styles.main}>
         <div className={styles.columnContainer}>
-          {["ToDo", "In Progress", "Done"].map((columnTitle) => (
+          {["ToDo", "In Progress", "Done"].map((title) => (
             <Column
-              key={columnTitle}
-              title={columnTitle}
-              tasks={tasks.filter((task) => task.column === columnTitle)}
+              key={title}
+              title={title}
+              tasks={tasks.filter((task) => task.column === title)}
               onDropTask={handleDropTask}
             />
           ))}
