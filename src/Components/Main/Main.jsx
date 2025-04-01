@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Column from "../Column/Column";
 import styles from "./Main.module.css";
 
 function Main() {
+  const dispatch = useDispatch();
   const tasks = useSelector((state) => state.tasks.items);
 
   function handleDropTask(taskId, newColumn) {

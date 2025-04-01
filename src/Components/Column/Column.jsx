@@ -1,9 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { updateTaskPosition } from "../../store/taskSlice";
 import { useDrop } from "react-dnd";
 import TaskCard from "../TaskCard/TaskCard";
 import styles from "./Column.module.css";
 
-function Column({ title, tasks, onDropTask }) {
+function Column({ title, tasks }) {
   const dispatch = useDispatch();
 
   const [{ isOver }, drop] = useDrop({

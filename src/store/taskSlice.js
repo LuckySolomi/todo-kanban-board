@@ -1,22 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// Асинхронна функція для отримання issues з GitHub API
 export const fetchIssues = createAsyncThunk(
   "tasks/fetchIssues",
-  async (repoPath, { rejectWithValue }) => {
-    try {
-      const response = await fetch(
-        `https://api.github.com/repos/${repoPath}/issues?state=all`
-      );
-      if (!response.ok) {
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
-      }
-      const data = await response.json();
-      console.log("Fetched issues:", data);
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+  async (repoPath) => {
+    const response = await fetch(
+      `https://api.github.com/repos/${repoPath}/issues`
+    );
+    const data = await response.json();
+
+    return data.map((issue) => ({
+      id: issue.id,
+      cardTitle: issue.title,
+      column: "ToDo",
+      url: issue.html_url,
+    }));
   }
 );
 

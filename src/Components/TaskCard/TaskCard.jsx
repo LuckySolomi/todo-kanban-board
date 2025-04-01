@@ -1,13 +1,7 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { useDrag } from "react-dnd";
 import styles from "./TaskCard.module.css";
 
-function TaskCard({ id, cardTitle, column }) {
-  const dispatch = useDispatch();
-  const [starred, setStarred] = useState(false);
-  const [stars, setStars] = useState(0);
-
+function TaskCard({ id, column }) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "TASK",
     item: { id, column },
@@ -22,9 +16,9 @@ function TaskCard({ id, cardTitle, column }) {
       className={styles.taskCard}
       style={{ opacity: isDragging ? 0.5 : 1 }}
     >
-      <h2>{cardTitle}</h2>
+      <h2>issue.title</h2>
       <div className={styles.amountFrequencyContainer}>
-        <p>#1</p>
+        <span>#1</span>
         <p>opened 3 days ago</p>
       </div>
 
