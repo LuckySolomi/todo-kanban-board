@@ -4,7 +4,7 @@
 }
 
 .breadcrumbPart {
-  margin-right: 10px;
+  margin: 0 10px;
   font-weight: 700;
   color: rgba(15, 15, 144, 0.722);
   cursor: pointer;

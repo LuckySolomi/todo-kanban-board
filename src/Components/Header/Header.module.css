@@ -44,6 +44,19 @@
 
 .breadcrumbContainer {
   width: 100%;
+  max-width: 1700px;
   display: flex;
   justify-content: flex-start;
+  margin: auto;
+}
+
+.starContainer {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.starContainer {
+  white-space: nowrap;
 }

@@ -21,10 +21,22 @@ export const fetchIssues = createAsyncThunk(
   }
 );
 
+export const fetchRepoDetails = createAsyncThunk(
+  "repo/fetchDetails",
+  async (repoPath) => {
+    const response = await fetch(`https://api.github.com/repos/${repoPath}`);
+    const data = await response.json();
+    return {
+      stars: data.stargazers_count,
+    };
+  }
+);
+
 const initialState = {
   items: [],
   status: "idle", // "idle" | "loading" | "succeeded" | "failed"
   error: null,
+  stars: 0,
 };
 
 const taskSlice = createSlice({
@@ -54,6 +66,9 @@ const taskSlice = createSlice({
       .addCase(fetchIssues.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(fetchRepoDetails.fulfilled, (state, action) => {
+        state.stars = action.payload.stars;
       });
   },
 });
