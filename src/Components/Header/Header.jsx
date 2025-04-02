@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchIssues } from "../../store/taskSlice";
 import Button from "../../Shared/Components/Button/Button";
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import styles from "./Header.module.css";
 
 function Header() {
@@ -25,6 +26,15 @@ function Header() {
     }
   };
 
+  const [history, setHistory] = useState(["facebook", "react"]);
+
+  const handleNavigate = (target) => {
+    const updatedHistory = history.includes(target)
+      ? history.slice(0, history.indexOf(target) + 1)
+      : [...history, target];
+    setHistory(updatedHistory);
+  };
+
   return (
     <div className={styles.header}>
       <div className={styles.contentContainer}>
@@ -42,6 +52,13 @@ function Header() {
         >
           Load issues
         </Button>
+      </div>
+      <div className={styles.breadcrumbContainer}>
+        <Breadcrumbs
+          owner={history[0]}
+          repo={history[1]}
+          onNavigate={handleNavigate}
+        />
       </div>
     </div>
   );
